@@ -78,7 +78,11 @@
                     Console.WriteLine("Virheellinen pituus, nuolen hinta ei muutu.");
                 }
             }
-            Console.WriteLine($"Nuolen hinta on:{hinta} kolikkoa");
+            PalautaHinta(hinta);
+        }
+        static void PalautaHinta(int hinta)
+        {
+            Console.WriteLine($"Nuolen hinta on: {hinta} kolikkoa");
         }
     }
 }
