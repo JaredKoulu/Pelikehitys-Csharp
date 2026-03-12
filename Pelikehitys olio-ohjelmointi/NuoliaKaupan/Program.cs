@@ -16,18 +16,29 @@
         }
         class Nuoli
         {
-            public kärki Kärki { get; set; }
-            public perä Perä { get; set; }
+            private kärki _kärki;
+            private perä _perä;
+
             public Nuoli(kärki kärki, perä perä)
             {
-                this.Kärki = kärki;
-                this.Perä = perä;
+                this._kärki = kärki;
+                this._perä = perä;
+            }
+
+            public kärki GetKärki()
+            {
+                return _kärki;
+            }
+
+            public perä GetPerä()
+            {
+                return _perä;
             }
 
             public int LaskeHinta()
             {
                 int hinta = 0;
-                switch (Kärki)
+                switch (_kärki)
                 {
                     case kärki.puu:
                         hinta += 3;
@@ -39,7 +50,7 @@
                         hinta += 50;
                         break;
                 }
-                switch (Perä)
+                switch (_perä)
                 {
                     case perä.lehti:
                         hinta += 0;
@@ -111,4 +122,3 @@
         }
     }
 }
-
