@@ -18,15 +18,16 @@
         {
             public kärki Kärki { get; }
             public perä Perä { get; }
-
-            public Nuoli(kärki kärki, perä perä)
+            public int Pituus { get; }
+            public Nuoli(kärki kärki, perä perä, int pituus)
             {
                 this.Kärki = kärki;
                 this.Perä = perä;
+                this.Pituus = pituus;
             }
             public int LaskeHinta()
             {
-                int hinta = 0;
+                double hinta = 0;
                 switch (Kärki)
                 {
                     case kärki.puu:
@@ -51,36 +52,76 @@
                         hinta += 5;
                         break;
                 }
-                Console.WriteLine("Valitse nuolen pituus (60-100 cm): ");
-                if (hinta > 0)
-                {
-                    int pituusArvo = int.Parse(Console.ReadLine());
-                    if (pituusArvo >= 60 && pituusArvo <= 100)
-                    {
-                        hinta += (int)(pituusArvo * 0.05);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Virheellinen pituus, nuolen hinta ei muutu.");
-                    }
-                }
-                return hinta;
+                hinta += Pituus * 0.05;
+
+                return (int)hinta;
+            }
+            public static Nuoli LuoEliittiNuoli()
+            {
+                return new Nuoli(kärki.timantti, perä.kotkansulka, 100);
+            }
+
+            public static Nuoli LuoAloittelijaNuoli()
+            {
+                return new Nuoli(kärki.puu, perä.kanansulka, 70);
+            }
+
+            public static Nuoli LuoPerusNuoli()
+            {
+                return new Nuoli(kärki.teräs, perä.kanansulka, 85);
             }
         }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Valitse nuolen kärki: puu, teräs, timantti");
-            string kärkiValinta = Console.ReadLine();
-            kärki valittuKärki = KärkiString(kärkiValinta);
+            Console.WriteLine("Tervetuloa nuolikauppaan!");
+            Console.WriteLine("Haluatko:");
+            Console.WriteLine("1. Teettää custom nuolen");
+            Console.WriteLine("2. Ostaa valmiin nuolen");
 
-            Console.WriteLine("Valitse nuolen perä: lehti, kanansulka, kotkansulka");
-            string peräValinta = Console.ReadLine();
-            perä valittuPerä = PeräString(peräValinta);
+            string nuoliValinta = Console.ReadLine();
+            Nuoli nuoli = null;
 
-            Nuoli nuoli = new Nuoli(valittuKärki, valittuPerä);
-            int hinta = nuoli.LaskeHinta();
+            if (nuoliValinta == "1")
+            {
+                Console.WriteLine("Valitse nuolen kärki: puu, teräs, timantti");
+                string kärkiValinta = Console.ReadLine();
+                kärki valittuKärki = KärkiString(kärkiValinta);
 
-            LopullinenHinta(hinta);
+                Console.WriteLine("Valitse nuolen perä: lehti, kanansulka, kotkansulka");
+                string peräValinta = Console.ReadLine();
+                perä valittuPerä = PeräString(peräValinta);
+
+                Console.WriteLine("Valitse pituus (60-100):");
+                int pituus = int.Parse(Console.ReadLine());
+
+                nuoli = new Nuoli(valittuKärki, valittuPerä, pituus);
+            }
+            else if (nuoliValinta == "2")
+            {
+                Console.WriteLine("Minkäs näistä tahtoisit ostaa:");
+                Console.WriteLine("1. Eliittinuoli: Kärki timantti, perä kotkansulka, pituus 100");
+                Console.WriteLine("2. Aloittelijanuoli: Kärki puu, perä kanansulka, pituus 70");
+                Console.WriteLine("3. Perusnuoli: Kärki teräs, perä kanansulka, pituus 85");
+                string valmisNuoliValinta = Console.ReadLine();
+
+                nuoli = valmisNuoliValinta switch
+                {
+                    "1" => Nuoli.LuoEliittiNuoli(),
+                    "2" => Nuoli.LuoAloittelijaNuoli(),
+                    "3" => Nuoli.LuoPerusNuoli(),
+                    _ => null
+                };
+            }
+            if (nuoli != null)
+            {
+                int hinta = nuoli.LaskeHinta();
+                LopullinenHinta(hinta);
+            }
+            else
+            {
+                Console.WriteLine("Virheellinen valinta.");
+            }
         }
 
         static kärki KärkiString(string kärkiValinta)
