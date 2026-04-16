@@ -1,120 +1,14 @@
 ﻿namespace Seikkalijanreppu
 {
-    internal class Program
+    internal partial class Program
     {
-        public class Tavara
-        {
-            public double Paino { get; set; }
-            public double Tilavuus { get; set; }
-
-            public Tavara(double paino, double tilavuus)
-            {
-                Paino = paino;
-                Tilavuus = tilavuus;
-            }
-        }
-        public class Nuoli : Tavara
-        {
-            public Nuoli() : base(0.1, 0.05)
-            {
-
-            }
-        }
-        public class Jousi : Tavara
-        {
-            public Jousi() : base(1, 4)
-            {
-            }
-        }
-        public class Köysi : Tavara
-        {
-            public Köysi() : base(1, 1.5)
-            {
-            }
-        }
-        public class Vesi : Tavara
-        {
-            public Vesi() : base(2, 2)
-            {
-            }
-
-        }
-        public class Ruoka : Tavara
-        {
-            public Ruoka() : base(1, 0.5)
-            {
-            }
-        }
-        public class Miekka : Tavara
-        {
-            public Miekka() : base(5, 3)
-            {
-            }
-        }
-        public class Reppu
-        {
-            List<Tavara> tavarat;
-
-            public int maxMaara;
-            public double maxPaino;
-            public double maxTilavuus;
-
-            public Reppu(int maxMaara, double maxPaino, double maxTilavuus)
-            {
-                this.maxMaara = maxMaara;
-                this.maxPaino = maxPaino;
-                this.maxTilavuus = maxTilavuus;
-
-                tavarat = new List<Tavara>();
-
-            }
-            public int TavaraMaara
-            {
-                get { return tavarat.Count; }
-            }
-            public double NykyPaino
-            {
-                get
-                {
-                    double summa = 0;
-                    foreach (Tavara t in tavarat)
-                    {
-                        summa += t.Paino;
-                    }
-                    return summa;
-                }
-            }
-            public double NykyTilavuus
-            {
-                get
-                {
-                    double summa = 0;
-                    foreach (Tavara t in tavarat)
-                    {
-                        summa += t.Tilavuus;
-                    }
-                    return summa;
-                }
-            }
-            public bool Lisää(Tavara tavara)
-            {
-                if (TavaraMaara + 1 > maxMaara)
-                    return false;
-                if (NykyPaino + tavara.Paino > maxPaino)
-                    return false;
-                if (NykyTilavuus + tavara.Tilavuus > maxTilavuus)
-                    return false;
-
-                tavarat.Add(tavara);
-                return true;
-            }
-        }
         static void Main(string[] args)
         {
             Reppu reppu = new Reppu(10, 30, 20);
             while (true)
             {
                 Console.WriteLine($"Repussasi on tällähetkellä: {reppu.TavaraMaara}/{reppu.maxMaara} tavaraa, {reppu.NykyPaino}/{reppu.maxPaino} painoa ja {reppu.NykyTilavuus}/{reppu.maxTilavuus} tilavuus.");
+                Console.WriteLine("Repun sisältö: " + reppu);
                 Console.WriteLine("Mitä haluat lisätä?");
                 Console.WriteLine("1. Nuoli (painaa 0.1 ja tilavuus 0.05)");
                 Console.WriteLine("2. Jousi (painaa 1 ja tilavuus 4)");
