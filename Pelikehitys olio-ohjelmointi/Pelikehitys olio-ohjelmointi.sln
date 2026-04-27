@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuoliaKaupan", "NuoliaKaupa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seikkalijanreppu", "Seikkalijanreppu\Seikkalijanreppu.csproj", "{1FBC362F-051E-4C8E-BE05-4A7DB3163E46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robotti", "Robotti\Robotti.csproj", "{C3374574-A91C-4AE8-99A3-D34AA05D4727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1FBC362F-051E-4C8E-BE05-4A7DB3163E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FBC362F-051E-4C8E-BE05-4A7DB3163E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FBC362F-051E-4C8E-BE05-4A7DB3163E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3374574-A91C-4AE8-99A3-D34AA05D4727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3374574-A91C-4AE8-99A3-D34AA05D4727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3374574-A91C-4AE8-99A3-D34AA05D4727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3374574-A91C-4AE8-99A3-D34AA05D4727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
