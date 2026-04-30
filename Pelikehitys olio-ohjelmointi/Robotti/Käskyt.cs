@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Robotti
 {
-    class YlösKäsky : RobottiKäsky
+    class YlösKäsky : IRobottiKäsky
     {
-        public override void Suorita(Robotti robotti)
+        public void Suorita(Robotti robotti)
         {
             if (robotti.OnKäynnissä)
             {
@@ -16,9 +16,9 @@ namespace Robotti
             }
         }
     }
-    class AlasKäsky : RobottiKäsky
+    class AlasKäsky : IRobottiKäsky
     {
-        public override void Suorita(Robotti robotti)
+        public void Suorita(Robotti robotti)
         {
             if (robotti.OnKäynnissä)
             {
@@ -26,9 +26,9 @@ namespace Robotti
             }
         }
     }
-     class OikeaKäsky : RobottiKäsky
+     class OikeaKäsky : IRobottiKäsky
     {
-        public override void Suorita(Robotti robotti)
+        public void Suorita(Robotti robotti)
         {
             if (robotti.OnKäynnissä)
             {
@@ -36,9 +36,9 @@ namespace Robotti
             }
         }
     }
-     class VasenKäsky : RobottiKäsky
+     class VasenKäsky : IRobottiKäsky
     {
-        public override void Suorita(Robotti robotti)
+        public void Suorita(Robotti robotti)
         {
             if (robotti.OnKäynnissä)
             {
