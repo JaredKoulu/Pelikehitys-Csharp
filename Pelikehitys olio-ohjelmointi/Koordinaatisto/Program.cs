@@ -1,6 +1,6 @@
 ﻿namespace Koordinaatisto
 {
-    public struct Koordinaatti  
+    public struct Koordinaatti
     {
         public int X { get; private set; }
         public int Y { get; private set; }
